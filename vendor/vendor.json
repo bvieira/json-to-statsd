@@ -1,0 +1,37 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "3QOzj/2sAbtjVP25VLmL/ywP6Wc=",
+			"path": "github.com/cactus/go-statsd-client/statsd",
+			"revision": "1139cdac1a56e404b5382e3a3503a2c587d2c0c3",
+			"revisionTime": "2017-05-21T18:16:24Z"
+		},
+		{
+			"checksumSHA1": "Epx/Fewr0QrXZRdg26+97oIoV2k=",
+			"path": "github.com/jasonlvhit/gocron",
+			"revision": "42a5804d37aa0b9239b265e894a16b8edbf52d54",
+			"revisionTime": "2016-06-29T18:10:17Z"
+		},
+		{
+			"checksumSHA1": "mq6AQOilxW1tKj2bVsuqCDlcCSo=",
+			"path": "github.com/tidwall/gjson",
+			"revision": "c784c417818f59d6597274642d8ac1d09efc9b01",
+			"revisionTime": "2017-05-26T02:39:18Z"
+		},
+		{
+			"checksumSHA1": "qmePMXEDYGwkAfT9QvtMC58JN/E=",
+			"path": "github.com/tidwall/match",
+			"revision": "173748da739a410c5b0b813b956f89ff94730b4c",
+			"revisionTime": "2016-08-30T17:39:30Z"
+		},
+		{
+			"checksumSHA1": "fALlQNY1fM99NesfLJ50KguWsio=",
+			"path": "gopkg.in/yaml.v2",
+			"revision": "cd8b52f8269e0feb286dfeef29f8fe4d5b397e0b",
+			"revisionTime": "2017-04-07T17:21:22Z"
+		}
+	],
+	"rootPath": "github.com/bvieira/json-to-statsd"
+}
