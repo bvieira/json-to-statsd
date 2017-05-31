@@ -13,8 +13,8 @@ type StatsdSender struct {
 }
 
 //NewStatsdSender StatsdSender constructor
-func NewStatsdSender(addr string) (*StatsdSender, error) {
-	statsdClient, err := statsd.NewBufferedClient(addr, "", 100*time.Millisecond, 512)
+func NewStatsdSender(addr, prefix string) (*StatsdSender, error) {
+	statsdClient, err := statsd.NewBufferedClient(addr, prefix, 100*time.Millisecond, 512)
 	if err != nil {
 		return nil, err
 	}

@@ -23,6 +23,7 @@ func main() {
 	mapPath := flag.String("m", "map.yml", "map file from json to statsd key")
 	interval := flag.Int("i", 60, "interval in seconds to collect metrics")
 	statsdAddr := flag.String("s", "127.0.0.1:8125", "statsd address")
+	statsdPrefix := flag.String("p", "", "statsd key prefix")
 	flag.Parse()
 
 	if *serviceURL == "" {
@@ -36,7 +37,7 @@ func main() {
 
 	metricsRetrieval := NewHTTPMetricsRetrieval(*serviceURL, *serviceTimeout)
 
-	statsd, err := NewStatsdSender(*statsdAddr)
+	statsd, err := NewStatsdSender(*statsdAddr, *statsdPrefix)
 	if err != nil {
 		logError.Fatalf("could not create client for statsd:[%s], err:[%v]", *statsdAddr, err)
 	}
