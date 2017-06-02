@@ -30,9 +30,15 @@ func main() {
 		logError.Fatalf("service url is empty, use -h for help")
 	}
 
-	statsdMap, err := getMap(*mapPath)
+	templateRender := NewTemplateRender()
+	template, err := templateRender.Render(readFile(*mapPath))
 	if err != nil {
-		logError.Fatalf("could not read map, err:[%v]", err)
+		logError.Fatalf("could not render statsd map template, err:[%v]", err)
+	}
+
+	statsdMap, err := getMap(template)
+	if err != nil {
+		logError.Fatalf("could not parse statsd map, err:[%v]", err)
 	}
 
 	metricsRetrieval := NewHTTPMetricsRetrieval(*serviceURL, *serviceTimeout)
@@ -63,14 +69,17 @@ func execute(metricsRetrieval *HTTPMetricsRetrieval, statsd *StatsdSender, stats
 	logInfo.Printf("sent %d metrics to statsd on %v", len(statsdMap), millis(time.Since(start)))
 }
 
-func getMap(path string) (map[string]string, error) {
+func readFile(path string) string {
 	content, err := ioutil.ReadFile(path)
 	if err != nil {
-		return nil, err
+		logError.Fatalf("could not read statsd map, err:[%v]", err)
 	}
+	return string(content)
+}
 
+func getMap(content string) (map[string]string, error) {
 	m := make(map[string]string)
-	if err = yaml.Unmarshal(content, &m); err != nil {
+	if err := yaml.Unmarshal([]byte(content), &m); err != nil {
 		return nil, err
 	}
 	return m, nil
